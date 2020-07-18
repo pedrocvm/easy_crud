@@ -1,0 +1,49 @@
+.talentContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.talent{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 20px 50px;
+  padding: 5px 10px;
+  box-shadow: 1px 1px 1px 1px grey;
+  background-color: #f8f8f8;
+  transition: all 0.5s;
+  border: 1px solid lightgrey;
+}
+
+.talent:hover{
+  border: 1px solid rgb(184, 184, 184);
+}
+
+.cardTitle{
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.talent button{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  color: #b5131d;
+  font-weight: 600;
+  transition: all 0.5s;
+  box-shadow: none!important;
+  font-size: 10pt;
+  text-transform: initial!important;
+}
+
+.talent button:hover,
+.talent button:active,
+.talent button:focus{
+  color: red;
+  background-color: transparent;
+  box-shadow: none!important;
+}
