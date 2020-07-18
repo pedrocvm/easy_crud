@@ -250,6 +250,6 @@ let talentsSchema = mongoose.Schema(
   { versionKey: false }
 );
 
-const TalentsModel = mongoose.model('TALENTS', talentsSchema);
+const TalentsModel = mongoose.model('talents', talentsSchema, 'talents');
 
 export default TalentsModel;

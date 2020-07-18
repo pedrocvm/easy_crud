@@ -11,7 +11,7 @@ export default function TalentModal({
   allSkills,
   onClose,
   onEdit,
-  onDelete
+  onDelete,
 }) {
   const [isEditing, setIsEditing] = useState(false);
   const [talent, setTalent] = useState(selectedTalent[0]);
@@ -64,32 +64,31 @@ export default function TalentModal({
   const handleKeyDown = (event) => {
     if (event.key === 'Escape') {
       onClose();
-      setIsEditing(false)
+      setIsEditing(false);
     }
   };
 
   const handleEdit = () => {
-    setIsEditing(!isEditing)
-  }
+    setIsEditing(!isEditing);
+  };
 
   const handleTalentChange = (event) => {
     const { name, value } = event.target;
     setTalent({ ...talent, [name]: value });
   };
 
-
   const handleSave = () => {
     setMessage('Talento atualizado com sucesso.');
     setTimeout(() => {
-      onEdit(_id, talent)
+      onEdit(_id, talent);
     }, 1000);
-  }
+  };
 
   const handleDelete = () => {
-    if(confirm(`Deseja remover o Candidato ${name}?`)){
+    if (confirm(`Deseja remover o Candidato ${name}?`)) {
       onDelete(talent);
     }
-  }
+  };
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
@@ -101,7 +100,7 @@ export default function TalentModal({
 
   return (
     <div>
-      <Modal isOpen={true} >
+      <Modal isOpen={true}>
         <form onSubmit={handleFormSubmit}>
           <div style={styles.closeContainer}>
             <h5>
@@ -110,24 +109,43 @@ export default function TalentModal({
             <div>
               {message.length > 1 && <h6 style={styles.message}>{message}</h6>}
             </div>
-            <div className='btnContainer'>
-              
-              { isEditing &&             
-              <button
-                className="waves-effect waves-light btn blue darken-4"
-                style={styles.editBtn}
-                onClick={handleSave}
-              >
-                <i className='material-icons' style={{lineHeight: 0, position: 'relative', top: '-5px', color: 'white'}}>save</i>
-              </button>}
+            <div className="btnContainer">
+              {isEditing && (
+                <button
+                  className="waves-effect waves-light btn blue darken-4"
+                  style={styles.editBtn}
+                  onClick={handleSave}
+                >
+                  <i
+                    className="material-icons"
+                    style={{
+                      lineHeight: 0,
+                      position: 'relative',
+                      top: '-5px',
+                      color: 'white',
+                    }}
+                  >
+                    save
+                  </i>
+                </button>
+              )}
 
-              
               <button
                 style={styles.editBtn}
                 className="waves-effect waves-light btn darken-4"
                 onClick={handleEdit}
               >
-                <i className='material-icons' style={{lineHeight: 0, position: 'relative', top: '-5px', color: 'white'}}>edit</i>
+                <i
+                  className="material-icons"
+                  style={{
+                    lineHeight: 0,
+                    position: 'relative',
+                    top: '-5px',
+                    color: 'white',
+                  }}
+                >
+                  edit
+                </i>
               </button>
 
               <button
@@ -135,23 +153,45 @@ export default function TalentModal({
                 style={styles.editBtn}
                 onClick={handleDelete}
               >
-                <i className='material-icons' style={{lineHeight: 0, position: 'relative', top: '-5px', left: '-0.5px', color: 'black'}}>delete</i>
+                <i
+                  className="material-icons"
+                  style={{
+                    lineHeight: 0,
+                    position: 'relative',
+                    top: '-5px',
+                    left: '-0.5px',
+                    color: 'black',
+                  }}
+                >
+                  delete
+                </i>
               </button>
-              
+
               <button
                 style={styles.closeBtn}
                 className="waves-effect waves-light btn red darken-4"
                 onClick={handleModalClose}
               >
-                <i className='material-icons' style={{lineHeight: 0, position: 'relative', top: '-5px', left: '-0.5px', color: 'white'}}>close</i>
-              </button>                     
-
+                <i
+                  className="material-icons"
+                  style={{
+                    lineHeight: 0,
+                    position: 'relative',
+                    top: '-5px',
+                    left: '-0.5px',
+                    color: 'white',
+                  }}
+                >
+                  close
+                </i>
+              </button>
             </div>
-            
           </div>
 
-
-          <div className="row" style={{marginTop: '50px', marginBottom: '50px'}}>
+          <div
+            className="row"
+            style={{ marginTop: '50px', marginBottom: '50px' }}
+          >
             <div className="input-field col xl6 l6 m6 s12">
               <input
                 id="name"
@@ -230,7 +270,7 @@ export default function TalentModal({
                 Linkedin:
               </label>
             </div>
-            
+
             <div className="input-field col xl6 l6 m6 s12">
               <input
                 id="portfolio"
@@ -484,7 +524,6 @@ const styles = {
     padding: '10px',
   },
 
-
   radioContainer: {
     marginLeft: '15px',
   },
@@ -521,6 +560,6 @@ const styles = {
     color: 'white',
     border: '1px solid lightgrey',
     padding: '5px 10px',
-    borderRadius: '10px'
-  }
+    borderRadius: '10px',
+  },
 };

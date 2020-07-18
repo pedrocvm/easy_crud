@@ -5,6 +5,6 @@ let skillsSchema = mongoose.Schema({
   
 }, {versionKey: false});
 
-const SkillsModel = mongoose.model('SKILLS', skillsSchema);
+const SkillsModel = mongoose.model('skills', skillsSchema, 'skills');
 
 export default SkillsModel;
