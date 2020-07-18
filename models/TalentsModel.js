@@ -62,7 +62,7 @@ let talentsSchema = mongoose.Schema(
       // required: true,
     },
 
-    reactJs: {
+    react: {
       type: Number,
       // required: true,
     },
