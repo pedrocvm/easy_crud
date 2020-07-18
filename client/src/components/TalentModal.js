@@ -102,14 +102,14 @@ export default function TalentModal({
     <div>
       <Modal isOpen={true}>
         <form onSubmit={handleFormSubmit}>
-          <div style={styles.closeContainer}>
-            <h5>
+          <div style={styles.closeContainer} className='row'>
+            <h5 >
               <strong>Detalhes do Candidato</strong>
             </h5>
             <div>
               {message.length > 1 && <h6 style={styles.message}>{message}</h6>}
             </div>
-            <div className="btnContainer">
+            <div className="btnContainer col xl6 l6 m6 s12" style={styles.btnContainer}>
               {isEditing && (
                 <button
                   className="waves-effect waves-light btn blue darken-4"
@@ -204,7 +204,7 @@ export default function TalentModal({
                 required={!isEditing}
               />
               <label className="active" htmlFor="name">
-                Nome/Name:
+                Nome/Name
               </label>
             </div>
 
@@ -237,7 +237,7 @@ export default function TalentModal({
                 required={!isEditing}
               />
               <label className="active" htmlFor="email">
-                E-mail:
+                E-mail
               </label>
             </div>
 
@@ -252,7 +252,7 @@ export default function TalentModal({
                 onChange={handleTalentChange}
               />
               <label className="active" htmlFor="skype">
-                Skype:
+                Skype
               </label>
             </div>
 
@@ -267,22 +267,7 @@ export default function TalentModal({
                 onChange={handleTalentChange}
               />
               <label className="active" htmlFor="linkedin">
-                Linkedin:
-              </label>
-            </div>
-
-            <div className="input-field col xl6 l6 m6 s12">
-              <input
-                id="portfolio"
-                name="portfolio"
-                type="text"
-                className="validate"
-                disabled={!isEditing}
-                defaultValue={portfolio}
-                onChange={handleTalentChange}
-              />
-              <label className="active" htmlFor="portfolio">
-                Portfólio:
+                Linkedin
               </label>
             </div>
 
@@ -298,7 +283,7 @@ export default function TalentModal({
                 required={!isEditing}
               />
               <label className="active" htmlFor="linkedin">
-                Cidade:
+                Cidade
               </label>
             </div>
 
@@ -314,7 +299,22 @@ export default function TalentModal({
                 required={!isEditing}
               />
               <label className="active" htmlFor="state">
-                UF:
+                UF
+              </label>
+            </div>
+
+            <div className="input-field col xl6 l6 m6 s12">
+              <input
+                id="portfolio"
+                name="portfolio"
+                type="text"
+                className="validate"
+                disabled={!isEditing}
+                defaultValue={portfolio}
+                onChange={handleTalentChange}
+              />
+              <label className="active" htmlFor="portfolio">
+                Portfólio
               </label>
             </div>
 
@@ -330,7 +330,7 @@ export default function TalentModal({
                 required={!isEditing}
               />
               <label className="active" htmlFor="avaliability">
-                Disponibilidade para trabalhar hoje:
+                Quando poderá começar
               </label>
             </div>
 
@@ -346,7 +346,7 @@ export default function TalentModal({
                 required={!isEditing}
               />
               <label className="active" htmlFor="timeToWork">
-                Mlhor horário para trabalhar:
+                Melhor horário para trabalhar
               </label>
             </div>
 
@@ -362,7 +362,7 @@ export default function TalentModal({
                 required={!isEditing}
               />
               <label className="active" htmlFor="hourlySalary">
-                Pretensão salarial por hora:
+                Pretensão salarial por hora
               </label>
             </div>
 
@@ -378,8 +378,8 @@ export default function TalentModal({
                 return (
                   <div
                     key={index++}
-                    className="col xl6 l6 m12 s12"
-                    style={{ marginBottom: '20px' }}
+                    className="col xl3 l4 m4 s6"
+                    style={styles.radioLabelContainer}
                   >
                     <label
                       className="active"
@@ -391,8 +391,7 @@ export default function TalentModal({
 
                     <br />
 
-                    <label style={styles.firstButton}>
-                      <label style={styles.noob}>Não conhece</label>
+                    <label style={styles.radioButton}>
                       <input
                         name={skill}
                         type="radio"
@@ -402,6 +401,7 @@ export default function TalentModal({
                         required={!isEditing}
                       />
                       <span>0</span>
+                      <label style={styles.noob2}>Não conhece</label>
                     </label>
 
                     <label style={styles.radioButton}>
@@ -474,11 +474,11 @@ export default function TalentModal({
                 className="validate"
                 disabled={!isEditing}
                 value={anotherLanguage}
+                onChange={handleTalentChange}
                 style={{ marginTop: '20px' }}
               />
               <label className="active" htmlFor="anotherLanguage">
-                Conhece mais alguma linguagem ou framework que não foi listado
-                aqui em cima? Conte para nos e se auto avalie ainda de 0 a 5.
+                Alguma outra linguagem ou framework? Avalie-se.
               </label>
             </div>
 
@@ -492,6 +492,7 @@ export default function TalentModal({
                 className="validate"
                 disabled={!isEditing}
                 value={crudLink}
+                onChange={handleTalentChange}
               />
               <label className="active" htmlFor="crudLink">
                 Link CRUD
@@ -508,8 +509,15 @@ const styles = {
   closeContainer: {
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'space',
     justifyContent: 'space-between',
+  },
+
+  btnContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
   },
 
   closeBtn: {
@@ -528,8 +536,17 @@ const styles = {
     marginLeft: '15px',
   },
 
+  radioLabelContainer: {
+    margin: '30px 0', 
+    display: 'flex', 
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'flex-start'
+  },
+
   radioLabel: {
     lineHeight: 1,
+    marginBottom: '-15px'
   },
 
   radioButton: {
@@ -542,6 +559,11 @@ const styles = {
 
   noob: {
     marginRight: '15px',
+    color: 'red',
+  },
+
+  noob2: {
+    marginLeft: '15px',
     color: 'red',
   },
 

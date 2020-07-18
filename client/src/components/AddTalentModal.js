@@ -57,7 +57,7 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
       alert(`Há campos obrigatórios não preenchidos.`);
       return;
     };
-
+    
     onSave(newTalent)
     onClose();
   }
@@ -80,7 +80,12 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
                 className="waves-effect waves-light btn red darken-4"
                 onClick={handleModalClose}
               >
-                <i className='material-icons' style={{lineHeight: 0, position: 'relative', top: '-4px', color: 'white'}}>close</i>
+                <i className='material-icons' style={{
+                    lineHeight: 0,
+                    position: 'relative',
+                    top: '-5px',
+                    color: 'white',
+                  }}>close</i>
               </button>            
           </div>
 
@@ -256,8 +261,8 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
                 return (
                   <div
                     key={`${_id}+${skill}`}
-                    className="col xl6 l6 m12 s12"
-                    style={{ marginBottom: '20px' }}
+                    className="col xl3 l4 m4 s6"
+                    style={styles.radioLabelContainer}
                   >
                     <label
                       className="active"
@@ -269,8 +274,7 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
 
                     <br />
 
-                    <label style={styles.firstButton}>
-                      <label style={styles.noob}>Não conhece</label>
+                    <label style={styles.radioButton}>
                       <input
                         name={skill}
                         type="radio"
@@ -280,6 +284,7 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
                         onChange={handleTalentChange}
                       />
                       <span>0</span>
+                      <label style={styles.noob2}>Não conhece</label>
                     </label>
 
                     <label style={styles.radioButton}>
@@ -352,10 +357,10 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
                 type="text"
                 className="validate"
                 style={{ marginTop: '20px' }}
+                onChange={handleTalentChange}
               />
               <label className="active" htmlFor="anotherLanguage">
-                Conhece mais alguma linguagem ou framework que não foi listado
-                aqui em cima? Conte para nos e se auto avalie ainda de 0 a 5.
+                Alguma outra linguagem ou framework? Avalie-se.
               </label>
             </div>
 
@@ -368,6 +373,7 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
                 name="crudLink"
                 type="text"
                 className="validate"
+                onChange={handleTalentChange}
                 required={true}
               />
               <label className="active" htmlFor="crudLink">
@@ -410,12 +416,22 @@ const styles = {
     marginLeft: '15px',
   },
 
+  radioLabelContainer: {
+    margin: '30px 0', 
+    display: 'flex', 
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'flex-start'
+  },
+
+
   radioLabel: {
     lineHeight: 1,
+    marginBottom: '-15px'
   },
 
   radioButton: {
-    padding: '0 10px',
+    padding: '0 0px',
   },
 
   firstButton: {
@@ -424,6 +440,11 @@ const styles = {
 
   noob: {
     marginRight: '15px',
+    color: 'red',
+  },
+
+  noob2: {
+    marginLeft: '15px',
     color: 'red',
   },
 
