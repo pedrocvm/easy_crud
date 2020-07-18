@@ -261,7 +261,7 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
                 return (
                   <div
                     key={`${_id}+${skill}`}
-                    className="col xl3 l4 m4 s6"
+                    className="col xl4 l4 m4 s12"
                     style={styles.radioLabelContainer}
                   >
                     <label

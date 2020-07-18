@@ -103,13 +103,7 @@ export default function TalentModal({
       <Modal isOpen={true}>
         <form onSubmit={handleFormSubmit}>
           <div style={styles.closeContainer} className='row'>
-            <h5 >
-              <strong>Detalhes do Candidato</strong>
-            </h5>
-            <div>
-              {message.length > 1 && <h6 style={styles.message}>{message}</h6>}
-            </div>
-            <div className="btnContainer col xl6 l6 m6 s12" style={styles.btnContainer}>
+            <div className="btnContainer col xl12 l12 m12 s12" style={styles.btnContainer}>
               {isEditing && (
                 <button
                   className="waves-effect waves-light btn blue darken-4"
@@ -185,7 +179,18 @@ export default function TalentModal({
                   close
                 </i>
               </button>
+            </div><br/>
+
+            <div className='col xl12 l12 m12 s12'>
+              <h5>
+                <strong>Detalhes do Candidato</strong>
+              </h5>
             </div>
+
+            <div>
+              {message.length > 1 && <h6 style={styles.message}>{message}</h6>}
+            </div>
+
           </div>
 
           <div
@@ -378,7 +383,7 @@ export default function TalentModal({
                 return (
                   <div
                     key={index++}
-                    className="col xl3 l4 m4 s6"
+                    className="col xl4 l4 m4 s12"
                     style={styles.radioLabelContainer}
                   >
                     <label
@@ -508,9 +513,9 @@ export default function TalentModal({
 const styles = {
   closeContainer: {
     display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'space',
-    justifyContent: 'space-between',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-end'
   },
 
   btnContainer: {
