@@ -7,14 +7,14 @@ export default function SearchBar({onChanging, findName, nameToSearch, getAllTal
 
   const handleFindName = () => {
     document.querySelector('#search').value = '';
-    findName()
-  }
+    findName();
+  };
 
   
 
   const handleRefresh = () => {
-    getAllTalents()
-  }
+    getAllTalents();
+  };
 
 
 
@@ -31,5 +31,5 @@ export default function SearchBar({onChanging, findName, nameToSearch, getAllTal
       </button>
     </div>
   );
-}
+};
 

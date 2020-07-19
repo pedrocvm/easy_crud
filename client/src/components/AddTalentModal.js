@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import InputMask from 'react-input-mask';
 
-
 Modal.setAppElement('#root');
 
 export default function AddTalentModal({allSkills, onClose, onSave}) {
@@ -23,10 +22,6 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
     event.key === 'Escape' && onClose();  
   };
 
-  const handleFilterKeys = () => {
-    parseInt(event.target.value) ? event.target.value : ''
-  }
-
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
 
@@ -36,25 +31,27 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
   }, [handleKeyDown]);
 
   const handleTalentChange = (event) => {
-    let {name, value, type} = event.target;
+    const {name, value, type} = event.target;
+
     if(type === 'radio'){
       if(event.target.checked){
-        setNewTalent({...newTalent, [name.toLowerCase()]: +value});
-      }
+        setNewTalent({...newTalent, [name]: +value});
+      };
     }
 
-    if(name === 'hourlySalary'){
+    else if(name === 'hourlySalary'){
       const format = Number(
         value.replace(',', '.').replace(/[a-zA-Z, $]+/g, '')
       ).toFixed(2);
       
-      setNewTalent({...newTalent, [name]: format});
+      setNewTalent({ ...newTalent, [name]: +format });
+      return
     }
 
     else{
       setNewTalent({...newTalent, [name]: value});
-    } 
-  }
+    }; 
+  };
 
   const handleSave = () => {
     const inputArray = Array.from(document.querySelectorAll('input'));
@@ -73,9 +70,9 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
       return;
     };
     
-    onSave(newTalent)
+    onSave(newTalent);
     onClose();
-  }
+  };
 
 
   return (
@@ -83,7 +80,7 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
       <Modal isOpen={true}>
         <form onSubmit={handleFormSubmit}>
           <div style={styles.closeContainer}>
-            <h5>
+            <h5 style={{fontSize: '16pt'}}>
               <strong>Registrar Candidato</strong>
             </h5>
             <div>
@@ -115,6 +112,7 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
                 className="validate"
                 onChange={handleTalentChange}
                 required={true}
+                autoFocus
               />
               <label className="active" htmlFor="name">
                 Nome / Name <span style={styles.required}>*</span>
@@ -264,15 +262,14 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
             </div>
 
             <div className="col xl12 l12 m12 s12">
-              <h5 style={{ lineHeight: 3, marginBottom: '-10px' }}>
+              <h5 style={{ lineHeight: 3, marginBottom: '-10px', fontSize: '16pt' }}>
                 <strong>Skills do Candidato</strong>
               </h5>
             </div>
 
             <div>
               {allSkills.map((oneSkill) => {
-                const { _id, skill } = oneSkill;
-                
+                const { _id, skill, name } = oneSkill;
                 return (
                   <div
                     key={`${_id}+${skill}`}
@@ -291,7 +288,7 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
 
                     <label style={styles.radioButton}>
                       <input
-                        name={skill}
+                        name={name}
                         type="radio"
                         id={`${skill}0`}
                         value={0}
@@ -304,7 +301,7 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
 
                     <label style={styles.radioButton}>
                       <input
-                        name={skill}
+                        name={name}
                         type="radio"
                         id={`${skill}1`}
                         value={1}
@@ -315,7 +312,7 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
 
                     <label style={styles.radioButton}>
                       <input
-                        name={skill}
+                        name={name}
                         type="radio"
                         id={`${skill}2`}
                         value={2}
@@ -326,7 +323,7 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
 
                     <label style={styles.radioButton}>
                       <input
-                        name={skill}
+                        name={name}
                         type="radio"
                         id={`${skill}3`}
                         value={3}
@@ -337,7 +334,7 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
 
                     <label style={styles.radioButton}>
                       <input
-                        name={skill}
+                        name={name}
                         type="radio"
                         id={`${skill}4`}
                         value={4}
@@ -348,7 +345,7 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
 
                     <label style={styles.radioButton}>
                       <input
-                        name={skill}
+                        name={name}
                         type="radio"
                         id={`${skill}5`}
                         value={5}
@@ -404,7 +401,7 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
       </Modal>
     </div>
   );
-}
+};
 
 const styles = {
   closeContainer: {

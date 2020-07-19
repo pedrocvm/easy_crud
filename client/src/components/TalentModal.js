@@ -43,14 +43,14 @@ export default function TalentModal({
     return {
       name: skill.skill,
       skill: skill.name
-    }
+    };
   });
 
   let scoreSkill = allScores.map((score) => score);
 
-  let skillNameArray = skillName.map(name => name.name)
+  let skillNameArray = skillName.map(name => name.name);
 
-  let skillCodeArray = skillName.map(skill => skill.skill)
+  let skillCodeArray = skillName.map(skill => skill.skill);
   tempArray.push({
     name: skillNameArray.map((name) => name),
     skill: skillCodeArray.map((code) => code),
@@ -65,7 +65,7 @@ export default function TalentModal({
       skill: tempArray[0].skill[i],
       score: tempArray[0].score[i]
     });
-  }
+  };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -92,20 +92,23 @@ export default function TalentModal({
     const { name, value, type, checked, id } = event.target;
     if(type === 'radio'){
       if(checked){
-        setTalent({...talent, [id]: Number(value)});
-      }
+        const numberValue = Number(value);
+        setTalent({...talent, [id]: numberValue});
+      };
 
     }
-    if(name === 'hourlySalary'){
+
+    else if(name === 'hourlySalary'){
       const format = Number(
         value.replace(',', '.').replace(/[a-zA-Z, $]+/g, '')
       ).toFixed(2);
       
       setTalent({ ...talent, [name]: +format });
     }
+
     else{
       setTalent({ ...talent, [name]: value });
-    }    
+    };  
   };
 
   const handleSave = () => {
@@ -118,7 +121,7 @@ export default function TalentModal({
   const handleDelete = () => {
     if (confirm(`Deseja remover o Candidato ${name}?`)) {
       onDelete(talent);
-    }
+    };
   };
 
   useEffect(() => {
@@ -213,7 +216,7 @@ export default function TalentModal({
             </div><br/>
 
             <div className='col xl12 l12 m12 s12'>
-              <h5>
+              <h5 style={{fontSize: '16pt'}}>
                 <strong>Detalhes do Candidato</strong>
               </h5>
             </div>
@@ -404,7 +407,7 @@ export default function TalentModal({
             </div>
 
             <div className="col xl12 l12 m12 s12">
-              <h5 style={{ lineHeight: 3, marginBottom: '-10px' }}>
+              <h5 style={{ lineHeight: 3, marginBottom: '-10px', fontSize: '16pt' }}>
                 <strong>Skills do Candidato</strong>
               </h5>
             </div>
@@ -552,7 +555,7 @@ export default function TalentModal({
       </Modal>
     </div>
   );
-}
+};
 
 const styles = {
   closeContainer: {

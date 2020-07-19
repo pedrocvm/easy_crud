@@ -22,8 +22,8 @@ export default function App() {
   const handleMessage = (newMessage) => {
     setMessage(newMessage);
 
-    return message  
-  }
+    return message;
+  };
 
   const onChangeSearchName = (event) => {
     const searchName = event.target.value;
@@ -37,16 +37,16 @@ export default function App() {
     } 
     else{
       setTimeout(() => {
-        setAllTalents([])
-        handleMessage('Nenhum registro encontrado.')
+        setAllTalents([]);
+        handleMessage('Nenhum registro encontrado.');
       }, 1000);
-    }
+    };
   };
 
   const handleRefreshSearch = async () => {
     const refreshedSearch = await api.getTalents();
     setAllTalents(refreshedSearch);
-  }
+  };
 
   useEffect(() => {
     const getAllTalents = async () => {
@@ -57,9 +57,9 @@ export default function App() {
       }
       else{
         setTimeout(() => {
-          handleMessage('Nenhum registro encontrado.')
+          handleMessage('Nenhum registro encontrado.');
         }, 1000);
-      }
+      };
       
     };
 
@@ -71,6 +71,16 @@ export default function App() {
     getAllTalents();
     getAllSkills();
   }, []);
+
+  
+  const handleSave = async (talentData) => {
+    await api.insertTalent(talentData);
+
+    const newTalents = Object.assign([], allTalents);
+
+    newTalents.push(talentData);
+    setAllTalents(newTalents);
+  };
 
   const handleSelectTalent = async (talent) => {
     const selected = await api.getOneTalent(talent);
@@ -88,7 +98,7 @@ export default function App() {
 
     const newTalent = Object.assign([], allTalents);
     const editIndex = newTalent.findIndex((talent) => {
-      return talent._id === talentToPersist._id
+      return talent._id === talentToPersist._id;
     });
 
     newTalent.splice(editIndex, 1, talentToPersist);
@@ -108,8 +118,8 @@ export default function App() {
   
         const newTalents = Object.assign([], allTalents);
         newTalents.splice(indexToDelete, 1);
-        setAllTalents(newTalents)
-        setIsModalOpen(false)
+        setAllTalents(newTalents);
+        setIsModalOpen(false);
       }
 
     }
@@ -117,11 +127,11 @@ export default function App() {
       await api.deleteAllTalents();
       const newTalents = [];
       setAllTalents(newTalents);
-      setIsModalOpen(false)
+      setIsModalOpen(false);
       setTimeout(() => {
-        handleMessage('Nenhum registro encontrado.')
+        handleMessage('Nenhum registro encontrado.');
       }, 1000);
-    }
+    };
   };
 
   const handleDeleteAll = async () => {
@@ -129,20 +139,11 @@ export default function App() {
       await api.deleteAllTalents();
       const newTalents = [];
       setAllTalents(newTalents);
-      alert('Todos os Candidatos foram excluídos.')
+      alert('Todos os Candidatos foram excluídos.');
       setTimeout(() => {
-        handleMessage('Nenhum registro encontrado.')
+        handleMessage('Nenhum registro encontrado.');
       }, 1000);
-    }
-  }
-
-  const handleSave = async (talentData) => {
-    await api.insertTalent(talentData);
-
-    const newTalents = Object.assign([], allTalents);
-
-    newTalents.push(talentData)
-    setAllTalents(newTalents)
+    };
   };
 
   const handleActiveAdd = () => {
@@ -218,4 +219,4 @@ export default function App() {
       </div>
     </div>
   );
-}
+};

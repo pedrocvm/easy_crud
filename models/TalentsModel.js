@@ -47,219 +47,147 @@ let talentsSchema = mongoose.Schema(
     },
 
     ionic: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     react: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     reactNative: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     android: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     flutter: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     swift: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     ios: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     html: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     css: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     bootstrap: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     jquery: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     angularJs: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     angular: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     java: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     python: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     flask: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     aspNetMvc: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     aspNetWebForm: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     c: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     cSharp: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     nodeJs: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     expressJs: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     cake: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     django: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     majento: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     php: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     vueJs: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     wordpress: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     ruby: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     sqlServer: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     mySql: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     salesforce: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     photoshop: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     ilustrator: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     seo: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     laravel: {
-      type: Number,
-      min: 0,
-      max: 5
+      type: Number
     },
 
     anotherLanguage: {

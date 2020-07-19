@@ -18,12 +18,12 @@ export default function Header({
 }) {
 
   const handleAddTalent = () => {
-    onAdd()
-  }
+    onAdd();
+  };
 
   const handleRemoveAll = () => {
     onRemoveAll();
-  }
+  };
 
 
   return (
@@ -99,4 +99,4 @@ export default function Header({
       </div>
     </div>
   );
-}
+};

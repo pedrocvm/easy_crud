@@ -19,7 +19,7 @@ export default function Spinner({message}) {
         <span style={{marginLeft: '10px', fontSize: '1.2rem'}} hidden={message}>Aguarde...</span>
     </div>
   );
-}
+};
 
 const styles = {
   flexRow: {
@@ -28,4 +28,4 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center'
   }
-}
+};

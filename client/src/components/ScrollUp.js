@@ -18,7 +18,7 @@ export default function ScrollUp() {
       </a>
     </div>
   );
-}
+};
 
 const styles = {
   scrollUp: {

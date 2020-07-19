@@ -23,7 +23,6 @@ const mask = (value) => {
 const formatter = Intl.NumberFormat('pt-BR', {
   style: 'currency',
   currency: 'BRL',
-  
 });
 
 const formatNumber = (value) => {
@@ -33,6 +32,5 @@ const formatNumber = (value) => {
     return '';
   }
 };
-
 
 export { maskPhone, mask, formatNumber };
