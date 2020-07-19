@@ -137,7 +137,8 @@ export default function TalentModal({
       <Modal isOpen={true}>
         <form onSubmit={handleFormSubmit}>
           <div style={styles.closeContainer} className='row'>
-            <div className="btnContainer col xl12 l12 m12 s12" style={styles.btnContainer}>
+            
+            <div className="col xl12 l12 m12 s12" style={styles.btnContainer}>
               {isEditing && (
                 <button
                   className="waves-effect waves-light btn blue darken-4"

@@ -69,6 +69,9 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
       alert(`Há campos obrigatórios não preenchidos.`);
       return;
     };
+
+    alert('Talento registrado com sucesso.');
+
     
     onSave(newTalent);
     onClose();
@@ -79,19 +82,13 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
     <div>
       <Modal isOpen={true}>
         <form onSubmit={handleFormSubmit}>
-          <div style={styles.closeContainer}>
-            <h5 style={{fontSize: '16pt'}}>
-              <strong>Registrar Candidato</strong>
-            </h5>
-            <div>
-              {message.length > 1 && <h6 style={styles.message}>{message}</h6>}
-            </div>
+          <div style={styles.closeContainer} className='row'>
 
+            <div className='col xl12 l12 m12 s12' style={styles.btnContainer}>
               <button
                 style={styles.closeBtn}
                 className="waves-effect waves-light btn red darken-4"
-                onClick={handleModalClose}
-              >
+                onClick={handleModalClose}>
                 <i className='material-icons' style={{
                     lineHeight: 0,
                     position: 'relative',
@@ -99,8 +96,15 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
                     color: 'white',
                   }}>close</i>
               </button>            
-          </div>
+            </div>
 
+           <div className='col xl12 l12 m12 s12'>
+             <h5 style={{fontSize: '16pt'}}>
+               <strong>Registrar Candidato</strong>
+            </h5>
+           </div>        
+
+          </div>
 
           <div className="row" style={{marginTop: '50px', marginBottom: '50px'}}>
            
@@ -406,7 +410,7 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
 const styles = {
   closeContainer: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
@@ -415,6 +419,13 @@ const styles = {
     marginLeft: '20px',
     borderRadius: '50%',
     padding: '10px',
+  },
+
+  btnContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
   },
 
   editBtn: {
