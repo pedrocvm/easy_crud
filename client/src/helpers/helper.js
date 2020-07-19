@@ -10,7 +10,7 @@ const maskPhone = (event) => {
   };
 
   event.target.value = mask(value);
-}
+};
 
 const mask = (value) => {
   value = value.replace(/\D/g, '');
@@ -23,16 +23,16 @@ const mask = (value) => {
 const formatter = Intl.NumberFormat('pt-BR', {
   style: 'currency',
   currency: 'BRL',
+  
 });
 
 const formatNumber = (value) => {
-  if(value){
-    return formatter.format(value)
+  if (value) {
+    return formatter.format(value);
+  } else {
+    return '';
   }
-  else{
-    return ""
-  }
-}
+};
 
 
-export {maskPhone, mask, formatNumber};
+export { maskPhone, mask, formatNumber };

@@ -1,7 +1,6 @@
 import React from 'react';
 import css from '../css.modules/talent.module.css';
 import capitalize from 'capitalize-pt-br';
-import InfiniteScroll from 'react-infinite-scroll-component';
 
 export default function TalentsControl({ allTalents, selected }) {
   const handleSelect = (event) => {

@@ -1,6 +1,8 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
+import InputMask from 'react-input-mask';
+
 
 Modal.setAppElement('#root');
 
@@ -21,6 +23,10 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
     event.key === 'Escape' && onClose();  
   };
 
+  const handleFilterKeys = () => {
+    parseInt(event.target.value) ? event.target.value : ''
+  }
+
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
 
@@ -36,6 +42,15 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
         setNewTalent({...newTalent, [name.toLowerCase()]: +value});
       }
     }
+
+    if(name === 'hourlySalary'){
+      const format = Number(
+        value.replace(',', '.').replace(/[a-zA-Z, $]+/g, '')
+      ).toFixed(2);
+      
+      setNewTalent({...newTalent, [name]: format});
+    }
+
     else{
       setNewTalent({...newTalent, [name]: value});
     } 
@@ -45,10 +60,10 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
     const inputArray = Array.from(document.querySelectorAll('input'));
 
     const requiredInput = inputArray.filter(input => input.required === true);
-
+    
     let isRequired
     requiredInput.forEach(input => {
-      if(input.value = ''){
+      if(input.value === ''){
         isRequired = true
       };
     });
@@ -121,11 +136,11 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
             </div>
 
             <div className="input-field col xl6 l6 m6 s12">
-              <input
+              <InputMask
+                mask="(99) 99999-9999"
                 id="phone"
                 name="phone"
                 type="text"
-                maxLength={11}
                 className="validate"
                 onChange={handleTalentChange}
                 required={true}
@@ -236,7 +251,7 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
               <input
                 id="hourlySalary"
                 name="hourlySalary"
-                type="number"
+                type="text"
                 className="validate"
                 data-thousands= "" 
                 data-decimal= ","
@@ -373,8 +388,8 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
                 name="crudLink"
                 type="text"
                 className="validate"
-                onChange={handleTalentChange}
                 required={true}
+                onChange={handleTalentChange}
               />
               <label className="active" htmlFor="crudLink">
                 Link CRUD <span style={styles.required}>*</span>
@@ -383,7 +398,7 @@ export default function AddTalentModal({allSkills, onClose, onSave}) {
           </div>
 
           <div className='center'>
-            <button className='waves-effect waves-light btn red darken-4' onClick={handleSave}>SALVAR</button>
+            <button type="submit" className='waves-effect waves-light btn red darken-4' onClick={handleSave}>SALVAR</button>
           </div>
         </form>
       </Modal>

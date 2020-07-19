@@ -98,19 +98,30 @@ export default function App() {
   };
 
   const handleDelete = async (talentToDelete) => {
-    const isDeleted = await api.deleteTalent(talentToDelete);
-    
-    if (isDeleted) {
-      const indexToDelete = allTalents.findIndex(
-        (talent) => talent._id === talentToDelete._id  
-      );
+    if(allTalents.length > 1){
+      const isDeleted = await api.deleteTalent(talentToDelete);
 
-      const newTalents = Object.assign([], allTalents);
-      newTalents.splice(indexToDelete, 1);
-      setAllTalents(newTalents)
-      setIsModalOpen(false)
+      if (isDeleted) {
+        const indexToDelete = allTalents.findIndex(
+          (talent) => talent._id === talentToDelete._id  
+        );
+  
+        const newTalents = Object.assign([], allTalents);
+        newTalents.splice(indexToDelete, 1);
+        setAllTalents(newTalents)
+        setIsModalOpen(false)
+      }
+
     }
-      
+    else{
+      await api.deleteAllTalents();
+      const newTalents = [];
+      setAllTalents(newTalents);
+      setIsModalOpen(false)
+      setTimeout(() => {
+        handleMessage('Nenhum registro encontrado.')
+      }, 1000);
+    }
   };
 
   const handleDeleteAll = async () => {

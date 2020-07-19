@@ -107,7 +107,7 @@ const deleteTalent = async (req, res) => {
 const removeAll = async (req, res) => {
   try {
     await TalentsModel.remove({})
-    res.send(await TalentsModel.find({}));
+    res.send(true);
   } 
   catch (error) {
     res.status(500).send({ message: `An error occurred: ${err.message}` });

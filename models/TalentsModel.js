@@ -4,237 +4,262 @@ let talentsSchema = mongoose.Schema(
   {
     email: {
       type: String,
-      // required: true,
     },
 
     name: {
       type: String,
-      // required: true,
     },
 
     phone: {
       type: String,
-      // required: true,
     },
 
     skype: {
       type: String,
-      // required: true,
     },
 
     linkedin: {
       type: String,
-      // required: true,
     },
 
     city: {
       type: String,
-      // required: true,
     },
 
     state: {
       type: String,
-      // required: true,
     },
 
     portfolio: {
       type: String,
-      // required: true,
     },
 
     avaliability: {
       type: String,
-      // required: true,
     },
 
     timeToWork: {
       type: String,
-      // required: true,
     },
 
     hourlySalary: {
-      type: Number,
-      // required: true,
+      type: String,
     },
 
     ionic: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     react: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     reactNative: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     android: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     flutter: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     swift: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     ios: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     html: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     css: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     bootstrap: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     jquery: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     angularJs: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     angular: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     java: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     python: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     flask: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     aspNetMvc: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     aspNetWebForm: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     c: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     cSharp: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     nodeJs: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     expressJs: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     cake: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     django: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     majento: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     php: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     vueJs: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     wordpress: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     ruby: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     sqlServer: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     mySql: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     salesforce: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     photoshop: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     ilustrator: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     seo: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     laravel: {
       type: Number,
-      // required: true,
+      min: 0,
+      max: 5
     },
 
     anotherLanguage: {
@@ -244,7 +269,6 @@ let talentsSchema = mongoose.Schema(
 
     crudLink: {
       type: String,
-      // required: true,
     }
   },
   { versionKey: false }

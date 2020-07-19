@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { mask, formatNumber } from '../helpers/helper.js';
 import capitalize from 'capitalize-pt-br';
+import InputMask from 'react-input-mask';
+
 
 Modal.setAppElement('#root');
 
@@ -16,38 +18,52 @@ export default function TalentModal({
   const [isEditing, setIsEditing] = useState(false);
   const [talent, setTalent] = useState(selectedTalent[0]);
   const [message, setMessage] = useState('');
-
+  
+  
+  
   //prettier-ignore
   const {_id, name, phone, email, skype, linkedin, city, state, portfolio, avaliability, timeToWork, hourlySalary,
-  ionic, reactJs, reactNative, android, flutter, swift, ios, html, css, bootstrap, jquery, angularJs,
+  ionic, react, reactNative, android, flutter, swift, ios, html, css, bootstrap, jquery, angularJs,
   angular, java, python, flask, aspNetMvc, aspNetWebForm, c, cSharp, nodeJs, expressJs, cake, django,
   majento, php, vueJs, wordpress, ruby, sqlServer, mySql, salesforce, photoshop, ilustrator, seo, laravel,
   anotherLanguage, crudLink} = selectedTalent[0];
-
+  
   let index = 1;
 
   //prettier-ignore
   const allScores = [
-  ionic, reactJs, reactNative, android, flutter, swift, ios, html, css, bootstrap, jquery, angularJs, angular,
+  ionic, react, reactNative, android, flutter, swift, ios, html, css, bootstrap, jquery, angularJs, angular,
   java, python, flask, aspNetMvc, aspNetWebForm, c, cSharp, nodeJs, expressJs, cake, django, majento, php,
   vueJs, wordpress, ruby, sqlServer, mySql, salesforce, photoshop, ilustrator, seo, laravel,
   ];
 
   let tempArray = [];
 
-  let skillName = allSkills.map((skill) => skill.skill);
+  let skillName = allSkills.map((skill) => { 
+    return {
+      name: skill.skill,
+      skill: skill.name
+    }
+  });
+
   let scoreSkill = allScores.map((score) => score);
 
+  let skillNameArray = skillName.map(name => name.name)
+
+  let skillCodeArray = skillName.map(skill => skill.skill)
   tempArray.push({
-    skill: skillName.map((name) => name),
+    name: skillNameArray.map((name) => name),
+    skill: skillCodeArray.map((code) => code),
     score: scoreSkill.map((score) => score),
   });
+
 
   let skillArray = [];
   for (let i = 0; i < allScores.length; i++) {
     skillArray.push({
+      name: tempArray[0].name[i],
       skill: tempArray[0].skill[i],
-      score: tempArray[0].score[i],
+      score: tempArray[0].score[i]
     });
   }
 
@@ -73,15 +89,30 @@ export default function TalentModal({
   };
 
   const handleTalentChange = (event) => {
-    const { name, value } = event.target;
-    setTalent({ ...talent, [name]: value });
+    const { name, value, type, checked, id } = event.target;
+    if(type === 'radio'){
+      if(checked){
+        setTalent({...talent, [id]: Number(value)});
+      }
+
+    }
+    if(name === 'hourlySalary'){
+      const format = Number(
+        value.replace(',', '.').replace(/[a-zA-Z, $]+/g, '')
+      ).toFixed(2);
+      
+      setTalent({ ...talent, [name]: +format });
+    }
+    else{
+      setTalent({ ...talent, [name]: value });
+    }    
   };
 
   const handleSave = () => {
     setMessage('Talento atualizado com sucesso.');
     setTimeout(() => {
       onEdit(_id, talent);
-    }, 1000);
+    }, 500);
   };
 
   const handleDelete = () => {
@@ -214,8 +245,9 @@ export default function TalentModal({
             </div>
 
             <div className="input-field col xl6 l6 m6 s12">
-              <input
+              <InputMask
                 id="phone"
+                mask="(99) 99999-9999"
                 name="phone"
                 type="text"
                 className="validate"
@@ -379,7 +411,7 @@ export default function TalentModal({
 
             <div>
               {skillArray.map((oneSkill) => {
-                const { skill, score } = oneSkill;
+                const { skill, score, name } = oneSkill;
                 return (
                   <div
                     key={index++}
@@ -391,18 +423,20 @@ export default function TalentModal({
                       style={styles.radioLabel}
                       htmlFor={skill}
                     >
-                      {skill}
+                      {name}
                     </label>
 
                     <br />
 
                     <label style={styles.radioButton}>
                       <input
-                        name={skill}
+                        name={name}
                         type="radio"
                         id={skill}
                         disabled={!isEditing}
+                        value={0}
                         defaultChecked={score === 0}
+                        onChange={handleTalentChange}
                         required={!isEditing}
                       />
                       <span>0</span>
@@ -411,55 +445,65 @@ export default function TalentModal({
 
                     <label style={styles.radioButton}>
                       <input
-                        name={skill}
+                        name={name}
                         type="radio"
                         id={skill}
                         disabled={!isEditing}
+                        value={1}
                         defaultChecked={score === 1}
+                        onChange={handleTalentChange}
                       />
                       <span>1</span>
                     </label>
 
                     <label style={styles.radioButton}>
                       <input
-                        name={skill}
+                        name={name}
                         type="radio"
                         id={skill}
                         disabled={!isEditing}
+                        value={2}
                         defaultChecked={score === 2}
+                        onChange={handleTalentChange}
                       />
                       <span>2</span>
                     </label>
 
                     <label style={styles.radioButton}>
                       <input
-                        name={skill}
+                        name={name}
                         type="radio"
                         id={skill}
                         disabled={!isEditing}
+                        value={3}
                         defaultChecked={score === 3}
+                        onChange={handleTalentChange}
                       />
                       <span>3</span>
                     </label>
 
                     <label style={styles.radioButton}>
                       <input
-                        name={skill}
+                        name={name}
                         type="radio"
                         id={skill}
                         disabled={!isEditing}
+                        value={4}
                         defaultChecked={score === 4}
+                        onChange={handleTalentChange}
                       />
                       <span>4</span>
                     </label>
 
                     <label style={styles.radioButton}>
                       <input
-                        name={skill}
+                        name={name}
                         type="radio"
                         id={skill}
                         disabled={!isEditing}
+                        value={5}
                         defaultChecked={score === 5}
+                        onChange={handleTalentChange}
                       />
                       <span>5</span>
                       <label style={styles.senior}>Senior</label>
